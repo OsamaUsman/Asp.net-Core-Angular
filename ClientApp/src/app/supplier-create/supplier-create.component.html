@@ -1,0 +1,17 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+
+<div class="form-group">
+    <input type="hidden" class="form-control" name="id" [value]="srepo.supplier.id">
+                  <label for="text"> Name </label>
+          <input type="text" class="form-control" [(ngModel)] ="srepo.supplier.name" name="name" #name="ngModel">
+              </div>
+        <div class="form-group" >
+          <label for="text"> City </label>
+          <input type="text" class="form-control" [(ngModel)]="srepo.supplier.city" name="city" #city="ngModel">
+        </div>
+        <div class="form-group">
+            <label for="text"> State </label>
+            <input type="text" class="form-control" [(ngModel)]="srepo.supplier.state" name="state" #state="ngModel">
+                </div>
+                <button type="submit"  class="btn btn-info"> Create Supplier </button>
+</form>

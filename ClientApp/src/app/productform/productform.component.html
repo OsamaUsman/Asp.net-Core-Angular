@@ -1,0 +1,62 @@
+
+  <div class="alert alert-primary" style="padding: 0%; " role="alert">
+    <h4 class="text-center mt-2"><strong>Create New </strong> </h4>
+  </div>
+      <form #form="ngForm" (ngSubmit)="onSubmit(form);" >
+        <div class="form-group">
+          <input type="hidden"class="form-control" [value]="Prepo.product.id" name="id"  >
+          
+          <label for="text"> Name </label>
+          <input type="text" class="form-control" [(ngModel)] ="Prepo.product.name" name="name" #name="ngModel" placeholder="Enter product name" required 
+          pattern="^[A-Za-z ]+$" minlength="3" maxlength="10">
+          <ul class="text-danger list-unstyled" *ngIf="name.invalid && name.dirty" >
+            <li *ngIf="name.errors.required"> Please enter product name... </li>
+            <li *ngIf="name.errors.pattern"> Please enter only alphabets... </li>
+            <li *ngIf="name.errors.minlength"> Please enter minimum Three alphabets... </li>
+            <li *ngIf="name.errors.maxlength"> Please enter maximum Ten alphabets... </li>
+          </ul>
+              </div>
+        <div class="form-group">
+          <label for="text"> Category </label>
+          <input type="text" class="form-control" [(ngModel)]="Prepo.product.category" name="category" #category="ngModel" placeholder="Category" required
+          pattern="^[A-Za-z ]+$" minlength="3"  >
+          <ul class="text-danger list-unstyled" *ngIf="category.invalid && category.dirty" >
+            <li *ngIf="category.errors.required"> Please enter category name... </li>
+            <li *ngIf="category.errors.pattern"> Please enter only alphabets... </li>
+            <li *ngIf="category.errors.minlength"> Please enter minimum Three alphabets... </li>
+             
+          </ul>
+        </div> 
+        <div class="form-group">
+            <label for="text"> Description </label>
+            <input type="text" class="form-control" [(ngModel)]="Prepo.product.description" name="description" #description="ngModel"  placeholder="Enter product discription"required
+             minlength="5" >
+            <ul class="text-danger list-unstyled" *ngIf="description.invalid && description.dirty" >
+              <li *ngIf="description.errors.required"> Please enter description </li>
+              <li *ngIf="description.errors.minlength"> Please enter minimum 5 alphabets... </li>
+             
+            </ul>
+                </div>
+          <div class="form-group">
+            <label for="text"> Price </label>
+            <input type="text"  class="form-control" [(ngModel)]="Prepo.product.price" name="price" #price="ngModel" placeholder="Price"required
+            pattern="^\d{0,8}(\.\d{1,4})?$"  >
+            <ul class="text-danger list-unstyled" *ngIf="price.invalid && price.dirty">
+              <li *ngIf="price.errors.required"> Please enter product name... </li>
+              <li *ngIf="price.errors.pattern"> Please enter Price like 10000.00  </li> 
+            </ul>
+              
+          </div>
+          <div class="form-group">
+            <label for="text"> Supplier </label>
+           <select [(ngModel)]="Prepo.product.supplierId" name="supplier" #supplier="ngModel"class="form-control" required>
+             <option value="0"> --select-- </option>
+             <option *ngFor="let item of Srepo.suppliers" value="{{item.id}}" > {{item.name}} </option>
+           </select>
+                </div>
+          
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">{{buttonText}}</button>
+        <button type="button" (click)="Prepo.product.id=0; form.reset();" [hidden]='buttonText=="Create New"'  class="btn btn-danger ml-3"> Cancel </button>
+
+      </form> 
+    

@@ -1,0 +1,21 @@
+<table class=" table table-hover table-responsive">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+
+       <tr *ngFor="let s of srepo.suppliers " >
+        <th  scope="row" >{{s.id}}</th>
+        <td>{{s.name}}</td>
+        <td>{{s.city}}</td>
+        <td>{{s.state}}</td>        
+      </tr>
+
+ </tbody>
+  </table>
